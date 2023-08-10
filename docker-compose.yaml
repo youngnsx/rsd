@@ -1,0 +1,38 @@
+version: '2.4'
+
+services:
+  ew1:
+    # build: ./build
+    image: youngnsx/earthworm:7.10
+    container_name: ew1
+    # restart: on-failure
+    restart: no
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ./apps/ew1/init.sh:/earthworm/init.sh
+      - ./apps/ew1:/earthworm/run
+    expose:
+      - 10000
+    # ports:
+    #   - 10000:10000
+    # command: /earthworm/run.sh
+    # command: ping 8.8.8.8
+
+  # ew2:
+  #   # build: ./build
+  #   image: youngnsx/earthworm:7.10
+  #   container_name: ew2
+  #   # restart: on-failure
+  #   restart: no
+  #   environment:
+  #     - TZ=Asia/Taipei
+  #   volumes:
+  #     - ./apps/ew2/init.sh:/earthworm/init.sh
+  #     - ./apps/ew2:/earthworm/run
+  #   expose:
+  #     - 10000
+    # ports:
+    #   - 10000:10000
+    # command: /earthworm/run.sh
+    # command: ping 8.8.8.8
