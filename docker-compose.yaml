@@ -1,38 +1,96 @@
 version: '2.4'
 
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.254
+
 services:
-  ew1:
+  rsd1-1:
     # build: ./build
     image: youngnsx/earthworm:7.10
-    container_name: ew1
+    container_name: rsd1-1
+    # restart: on-failure
+    restart: no
+    environment:
+      - TZ=Asia/Taipeiz
+    volumes:
+      - ./apps/rsd1-1/init.sh:/earthworm/init.sh
+      - ./apps/rsd1-1/3party:/3party
+      - ./apps/rsd1-1:/earthworm/run
+
+    expose:
+      - 10000-10010
+    # ports:
+    #   - 10000:10000
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.1.1    
+    # command: /earthworm/run.sh
+    # command: ping 8.8.8.8
+
+  rsd2-1:
+    # build: ./build
+    image: youngnsx/earthworm:7.10
+    container_name: rsd2-1
     # restart: on-failure
     restart: no
     environment:
       - TZ=Asia/Taipei
     volumes:
-      - ./apps/ew1/init.sh:/earthworm/init.sh
-      - ./apps/ew1:/earthworm/run
+      - ./apps/rsd2-1/init.sh:/earthworm/init.sh
+      - ./apps/rsd2-1:/earthworm/run
     expose:
-      - 10000
+      - 10000-10010
     # ports:
     #   - 10000:10000
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.2.1      
     # command: /earthworm/run.sh
     # command: ping 8.8.8.8
 
-  # ew2:
-  #   # build: ./build
-  #   image: youngnsx/earthworm:7.10
-  #   container_name: ew2
-  #   # restart: on-failure
-  #   restart: no
-  #   environment:
-  #     - TZ=Asia/Taipei
-  #   volumes:
-  #     - ./apps/ew2/init.sh:/earthworm/init.sh
-  #     - ./apps/ew2:/earthworm/run
-  #   expose:
-  #     - 10000
+  rsd3-1:
+    # build: ./build
+    image: youngnsx/earthworm:7.10
+    container_name: rsd3-1
+    # restart: on-failure
+    restart: no
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ./apps/rsd3-1/init.sh:/earthworm/init.sh
+      - ./apps/rsd3-1:/earthworm/run
+    expose:
+      - 10000-10010
     # ports:
     #   - 10000:10000
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.3.1      
     # command: /earthworm/run.sh
     # command: ping 8.8.8.8
+
+  rsd3-2:
+    # build: ./build
+    image: youngnsx/earthworm:7.10
+    container_name: rsd3-2
+    # restart: on-failure
+    restart: no
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ./apps/rsd3-2/init.sh:/earthworm/init.sh
+      - ./apps/rsd3-2:/earthworm/run
+    expose:
+      - 10000-10010
+    # ports:
+    #   - 10000:10000
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.3.2      
+    # command: /earthworm/run.sh
+    # command: ping 8.8.8.8    

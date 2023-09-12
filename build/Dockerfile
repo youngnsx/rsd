@@ -1,10 +1,12 @@
-FROM ubuntu:18.04
+FROM python:3.8-slim-bullseye
 
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update \
-    && apt-get install -y wget net-tools inetutils-ping nano vim \
+    && apt-get install -y wget net-tools inetutils-ping nano vim git htop \
     && rm -rf /var/lib/apt/lists/*
+
+RUN pip install numpy paho-mqtt
 
 RUN mkdir -p /earthworm
 WORKDIR /earthworm
