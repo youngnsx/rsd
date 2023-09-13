@@ -1,4 +1,4 @@
- MyModuleId     MOD_EXPORT_SCN      # 模組名稱
+ MyModuleId     MOD_EXPORT_SCNL_ACK # 模組名稱
  RingName       WAVE_RING        ## 匯出資料來源由WAVE_RING_Tmp
  HeartBeatInt   30                  # 系統監控程式運作的間隔時間
                                     #   Should be >= RcvAliveInt 

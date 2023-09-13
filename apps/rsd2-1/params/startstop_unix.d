@@ -68,3 +68,6 @@ Class/Priority    OTHER 0
 
 Process          "Imp_tankplayer_geotech_CWBSN_01.d"
 Class/Priority    OTHER 0
+
+Process          "go.bash"
+Class/Priority    OTHER 0

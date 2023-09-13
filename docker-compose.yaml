@@ -1,6 +1,6 @@
 version: '2.4'
 
-networks:
+networks:  
   vpcbr:
     driver: bridge
     ipam:
@@ -9,6 +9,55 @@ networks:
          gateway: 10.5.0.254
 
 services:
+  emqx1:
+    image: emqx:5
+    container_name: emqx1    
+    environment:
+    - "EMQX_NAME=emqx"
+    - "EMQX_HOST=node1.emqx.io"
+    - "EMQX_CLUSTER__DISCOVERY_STRATEGY=static"
+    - "EMQX_CLUSTER__STATIC__SEEDS=[emqx@node1.emqx.io, emqx@node2.emqx.io]"
+    volumes:
+      - ./apps/emqx1/emqx-data:/opt/emqx/data
+      # - ./apps/emqx1/emqx-etc:/opt/emqx/etc
+      - ./apps/emqx1/emqx-log:/opt/emqx/log
+    expose:
+      - 18083
+      - 1883
+      - 8083
+      - 8084
+    ports:
+      - 18083:18083
+      - 1883:1883
+      - 8083:8083
+      - 8084:8084        
+    networks:
+      vpcbr:
+        aliases:
+        - node1.emqx.io
+
+  emqx2:
+    image: emqx:5
+    container_name: emqx2    
+    environment:
+    - "EMQX_NAME=emqx"
+    - "EMQX_HOST=node2.emqx.io"
+    - "EMQX_CLUSTER__DISCOVERY_STRATEGY=static"
+    - "EMQX_CLUSTER__STATIC__SEEDS=[emqx@node1.emqx.io, emqx@node2.emqx.io]"
+    volumes:
+      - ./apps/emqx2/emqx-data:/opt/emqx/data
+      # - ./apps/emqx2/emqx-etc:/opt/emqx/etc
+      - ./apps/emqx2/emqx-log:/opt/emqx/log
+    expose:
+      - 18083 
+      - 1883
+      - 8083
+      - 8084
+    networks:
+      vpcbr:
+        aliases:
+        - node2.emqx.io
+
   rsd1-1:
     # build: ./build
     image: youngnsx/earthworm:7.10
@@ -21,7 +70,6 @@ services:
       - ./apps/rsd1-1/init.sh:/earthworm/init.sh
       - ./apps/rsd1-1/3party:/3party
       - ./apps/rsd1-1:/earthworm/run
-
     expose:
       - 10000-10010
     # ports:
@@ -93,4 +141,4 @@ services:
       vpcbr:
         ipv4_address: 10.5.3.2      
     # command: /earthworm/run.sh
-    # command: ping 8.8.8.8    
+    # command: ping 8.8.8.8

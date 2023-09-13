@@ -75,6 +75,3 @@ Class/Priority    OTHER 0
 
 Process          "Exp01_geotech_CWBSN_228.d"
 Class/Priority    OTHER 0
-
-Process          "go.bash"
-Class/Priority    OTHER 0
