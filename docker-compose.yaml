@@ -91,6 +91,8 @@ services:
     volumes:
       - ./apps/rsd2-1/init.sh:/earthworm/init.sh
       - ./apps/rsd2-1:/earthworm/run
+      - ./apps/rsd2-1/3party:/3party
+
     expose:
       - 10000-10010
     # ports:
@@ -112,6 +114,7 @@ services:
     volumes:
       - ./apps/rsd3-1/init.sh:/earthworm/init.sh
       - ./apps/rsd3-1:/earthworm/run
+      - ./apps/rsd3-1/3party:/3party      
     expose:
       - 10000-10010
     # ports:
@@ -133,6 +136,7 @@ services:
     volumes:
       - ./apps/rsd3-2/init.sh:/earthworm/init.sh
       - ./apps/rsd3-2:/earthworm/run
+      - ./apps/rsd3-2/3party:/3party      
     expose:
       - 10000-10010
     # ports:

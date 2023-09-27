@@ -73,5 +73,8 @@ HardKillDelay      5              # Wait this many more secs for procs to die
 Process          "tankplayer tankplayer.d"
 Class/Priority    OTHER 0
 
-Process          "Exp01_geotech_CWBSN_228.d"
+Process          "export_scnl_ack Exp01_geotech_CWBSN_228.d"
+Class/Priority    OTHER 0
+
+Process          "go.bash"
 Class/Priority    OTHER 0

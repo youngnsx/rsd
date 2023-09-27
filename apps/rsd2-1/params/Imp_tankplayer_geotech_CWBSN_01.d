@@ -10,7 +10,7 @@
 
 # Socket communication info
 #--------------------------
- SendAliveText  ImpAlive	# heartbeat text to foreign server machine
+ SendAliveText  Alive	# heartbeat text to foreign server machine
  SendAliveInt   30      	# seconds between alive msgs sent to server
 				#   0 = no alive messages to sending machine
  
@@ -18,7 +18,7 @@
 #------------------------------
  ServerIPAdr	10.5.1.1  # Ip address of the machine we're to listen to
  ServerPort	    10000		# IP port number used by sender
- RcvAliveText   ExpAlive        # export's heartbeat text
+ RcvAliveText   Alive        # export's heartbeat text
  RcvAliveInt	60		# export's heart beat interval in seconds
 				#   0 = no heartbeat expected
 

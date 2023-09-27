@@ -60,5 +60,5 @@ HardKillDelay      5              # Wait this many more secs for procs to die
 #    To comment out a line, preceed the line by #.
 #
 
-Process          "Imp_rsd21_geotech_CWBSN_01.d"
+Process          "import_ack Imp_rsd21_geotech_CWBSN_01.d"
 Class/Priority    OTHER 0

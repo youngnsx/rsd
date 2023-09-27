@@ -14,18 +14,17 @@ class Ring2MQTT():
     self.client = mqtt.Client()
 
     # 設定登入帳號密碼
-    self.client.username_pw_set("rsd1","rsd1688")
+    self.client.username_pw_set("rsd1","rsd16888")
     
     #如果使用MQTTS 加密連線（SSL/TLS）
     #self.client.tls_set()
 
     # 設定連線資訊(IP or domain name , Port)
-    # self.client.connect("node1.emqx.io", 1883)
-    self.client.connect("104.199.129.50", 1883)
+    self.client.connect("emqx1", 1883)
+    # self.client.connect("104.199.129.50", 1883)
 
     # Start an EW Module with parent ring 1000, mod_id 8, inst_id 141, heartbeat 30s, debug = False (MODIFY THIS!)
     self.ring2mqtt = PyEW.EWModule(1000, 2, 255, 30.0, False) 
-    
     
     # Add our Input ring as Ring 0
     self.ring2mqtt.add_ring(1000)
@@ -68,7 +67,7 @@ class Ring2MQTT():
     while self.runs:
       if self.ring2mqtt.mod_sta() is False:
         break
-      time.sleep(0.001)
+      time.sleep(0.00005)
       self.push_wave()
     self.ring2mqtt.goodbye()
     self.client.loop_stop()
@@ -82,3 +81,11 @@ class Ring2MQTT():
   def stop(self):
     self.runs = False
     
+def main():
+    print('Start')
+    mainStart =  Ring2MQTT()
+    mainStart.start()
+    #mainStart.run() 
+
+if __name__ == '__main__':
+    main()

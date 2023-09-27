@@ -24,11 +24,11 @@ MaxLatency               60   # Optional command: Packets with delay time
                                #  Only works on waveform messages.
  
 ServerIPAdr        10.5.1.1    # 接收資料電腦之地IP
-ServerPort            10000   # 接收資料電腦之Port
+ServerPort         10000   # 接收資料電腦之Port
 SendAliveText      Alive      # Alive字串
-SendAliveInt             30   # Alive間隔30秒
+SendAliveInt       30   # Alive間隔30秒
 RcvAliveText       Alive      # 收到Alive字串
-RcvAliveInt              60   # 收到Alive間隔
+RcvAliveInt        60   # 收到Alive間隔
 SocketDebug   0       # 關掉socket_ew debug
 
 Send_scnl * * * *  
@@ -37,4 +37,4 @@ Send_scnl * * * *
 
 Send_scnl * HLZ TW 10 
 Send_scnl * HLN TW 10 
-Send_scnl * HLE TW 10 
+Send_scnl * HLE TW 10

@@ -60,14 +60,14 @@ HardKillDelay      5              # Wait this many more secs for procs to die
 #    Processes may be disabled by commenting them out.
 #    To comment out a line, preceed the line by #.
 #
-Process          "Exp01_geotech_CWBSN_rsd31.d"
-Class/Priority    OTHER 0
+#Process          "export_scnl_ack Exp01_geotech_CWBSN_rsd31.d"
+#Class/Priority    OTHER 0
 
-Process          "Exp01_geotech_CWBSN_rsd32.d"
-Class/Priority    OTHER 0
+#Process          "export_scnl_ack Exp01_geotech_CWBSN_rsd32.d"
+#Class/Priority    OTHER 0
 
-Process          "Imp_tankplayer_geotech_CWBSN_01.d"
-Class/Priority    OTHER 0
+#Process          "import_ack Imp_tankplayer_geotech_CWBSN_01.d"
+#Class/Priority    OTHER 0
 
 Process          "go.bash"
 Class/Priority    OTHER 0
