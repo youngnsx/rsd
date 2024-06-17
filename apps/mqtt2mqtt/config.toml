@@ -1,0 +1,13 @@
+[receiveOpts]
+Broker = "mqtt://10.160.15.30:1883"
+ClientID ="mqttx_d5135a35"
+Username = "user01"
+Password = "user01001*"
+
+
+[forwardOpts]
+Broker = "tcp://10.160.15.40:1883"
+ClientID = "go_mqtt_forward_client"
+Username = "user02"
+Password = "user01001"
+Topic = "topic1-test"
